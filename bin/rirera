@@ -1,0 +1,40 @@
+#!/usr/bin/env ruby
+
+require 'rirera'
+require 'yaml'
+
+obj = RRR.new(ARGV[0])
+conf = YAML.load_file(File.join(File.expand_path("..", File.dirname(__FILE__)),"conf/rirera.yml"))
+broker = obj.get_broker(ARGV[0], conf) || usage
+
+system "clear"
+print "Volume: "
+volume = $stdin.gets.chomp.to_f
+
+while true do
+  print "Target price: "
+  target_price = $stdin.gets.chomp.gsub(",",".").to_f
+  print "Price: "
+  actual_price = $stdin.gets.chomp.gsub(",",".").to_f
+  print "Stop Loss: "
+  stop_loss = $stdin.gets.chomp.gsub(",",".").to_f
+
+  obj.test_input(actual_price, stop_loss)
+
+  chance = target_price - actual_price
+  risk = actual_price - stop_loss
+  rrr = (chance/risk).round(1)
+  amount = (volume/actual_price).round
+
+  total_commission = obj.get_total_commission(amount, actual_price, target_price, conf, broker)
+  max_gain = ((amount*target_price) - volume - total_commission).round(2)
+  loss = ((volume-(amount*stop_loss)) + total_commission).round(2)
+  break_even_price = obj.get_break_even(total_commission, volume, amount)
+
+  obj.print_rrr(rrr)
+
+  obj.print_result(volume, amount, max_gain, loss, total_commission, break_even_price)
+
+  exit if $stdin.gets.chomp == "n"
+  system "clear"
+end

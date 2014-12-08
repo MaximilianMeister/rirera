@@ -1,0 +1,8 @@
+---
+broker:
+  consors:
+    name: Cortal Consors
+    basic_price: 4.95
+    commission_rate: 0.0025
+    min_rate: 9.95
+    max_rate: 69.00
