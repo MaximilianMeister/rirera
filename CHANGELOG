@@ -1,3 +1,4 @@
 Version 0.1.0: Initial version
 Version 0.1.1: added rdoc usage documentation
 Version 0.1.2: added screenshot to README.rdoc
+Version 0.1.3: class refactoring/encapsulation
