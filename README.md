@@ -18,4 +18,15 @@ Add your broker, and its specific commision rates to `conf/rirera.yml`
 
 ## Run
 
-`rirera <broker_name>`
+```
+$ rirera -h
+Options:
+  --broker, -b <s>:   choose your broker
+  --volume, -v <f>:   volume (amount of money)
+  --target, -t <f>:   target price
+  --actual, -a <f>:   actual price
+    --stop, -s <f>:   stop loss
+        --loop, -l:   start rirera in loop input mode (other options will be
+                      discarded)
+        --help, -h:   Show this message
+```

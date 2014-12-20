@@ -2,25 +2,17 @@ require 'colorize'
 require 'yaml'
 
 class Rirera
-  attr_accessor :volume, :target, :actual, :stop
+  attr_accessor :broker, :volume, :target, :actual, :stop
 
-  def initialize(broker)
-    print_title
+  def initialize
     @conf = load_config
-    @broker = get_broker(broker)
-    @volume, @target, @actual, @stop = input
-  end
-
-  def usage
-    "Usage: ./rirera broker_name"
   end
 
   def get_broker(broker)
     unless @conf['broker'][broker].nil?
       broker
     else
-      puts "Not a valid broker"
-      abort usage
+      abort "Not a valid broker"
     end
   end
 
@@ -41,8 +33,6 @@ class Rirera
     puts "|_/                  "
     puts "L___________________ "
     puts ""
-    sleep 1
-    system "clear"
   end
 
   def print_rrr
@@ -69,16 +59,16 @@ class Rirera
     YAML.load_file(File.join(File.expand_path("..", File.dirname(__FILE__)),"conf/rirera.yml"))
   end
 
-  def test_input(actual_price, stop_loss)
-    if stop_loss > actual_price
-      puts "Stop Loss has to be lower than Price"
-      false
+  def stop_loss(actual_price, stop_loss)
+    if stop_loss >= actual_price
+      nil
     else
-      true
+      stop_loss
     end
   end
 
   def sanity_check(num)
+    num.chomp!.gsub!(",",".")
     # only allow int and float
     unless is_numeric?(num)
       puts "Wrong input"
@@ -136,19 +126,4 @@ class Rirera
     ((@volume + get_total_commission) / get_amount).round(2)
   end
 
-  def input
-    print "Volume: "
-    volume = sanity_check($stdin.gets.chomp)
-    print "Target price: "
-    target = sanity_check($stdin.gets.chomp.gsub(",","."))
-    print "Price: "
-    actual = sanity_check($stdin.gets.chomp.gsub(",","."))
-    stop = 0.0
-    loop do
-      print "Stop Loss: "
-      stop = sanity_check($stdin.gets.chomp.gsub(",","."))
-      break if test_input(actual.to_f, stop.to_f)
-    end
-    [volume, target, actual, stop]
-  end
 end

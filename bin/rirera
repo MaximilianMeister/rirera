@@ -1,17 +1,59 @@
 #!/usr/bin/env ruby
 
 require 'rirera'
+require 'trollop'
 
-begin
-  while true do
-    system "clear"
-    rrr = Rirera.new(ARGV[0])
-    rrr.print_result
-    puts ""
-    puts "Again? (y/n)"
-    exit if $stdin.gets.chomp == "n"
+def input
+  begin
+    while true do
+      system "clear"
+      rrr = Rirera.new
+      rrr.broker = rrr.get_broker(@opts[:broker])
+      print "volume: "
+      rrr.volume = rrr.sanity_check($stdin.gets)
+      print "target price: "
+      rrr.target = rrr.sanity_check($stdin.gets)
+      print "actual price: "
+      rrr.actual = rrr.sanity_check($stdin.gets)
+      loop do
+        print "stop loss: "
+        rrr.stop = rrr.stop_loss(rrr.actual, rrr.sanity_check($stdin.gets))
+        puts "stop loss has to be lower than actual price" if rrr.stop.nil?
+        break unless rrr.stop.nil?
+      end
+      rrr.print_result
+      puts ""
+      puts "Again? (y/n)"
+      exit if $stdin.gets.chomp == "n"
+      @opts.delete_if {|key,value| key != :broker }
+    end
+  rescue Interrupt => e
+      puts ""
+      abort "Exit..."
   end
-rescue Interrupt => e
-    puts ""
-    puts "Exit..."
 end
+
+def main
+  @opts = Trollop::options do
+    opt :broker, "choose your broker", :short => 'b', :required => true, :type => String
+    opt :volume, "volume (amount of money)", :short => 'v', :type => Float
+    opt :target, "target price", :short => 't', :type => Float
+    opt :actual, "actual price", :short => 'a', :type => Float
+    opt :stop, "stop loss", :short => 's', :type => Float
+    opt :loop, "start rirera in loop input mode (other options will be discarded)", :short => 'l'
+  end
+
+  if @opts[:loop_given]
+    input
+  else
+    rrr = Rirera.new
+    rrr.broker = rrr.get_broker(@opts[:broker])
+    rrr.volume = @opts[:volume_given] ? @opts[:volume] : abort("missing volume")
+    rrr.target = @opts[:target_given] ? @opts[:target] : abort("missing target")
+    rrr.actual = @opts[:actual_given] ? @opts[:actual] : abort("missing actual")
+    rrr.stop = @opts[:stop_given] ? rrr.stop_loss(rrr.actual,@opts[:stop]) : abort("missing stop")
+    abort("stop loss has to be lower than actual price") if rrr.stop.nil?
+    rrr.print_result
+  end
+end
+main
