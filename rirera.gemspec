@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name                    = 'rirera'
-  s.version                 = '0.1.4'
+  s.version                 = '0.1.5'
   s.date                    = Time.now.strftime('%Y-%m-%d')
   s.summary                 = "Risk Reward Ratio"
   s.description             = "A simple Risk Reward Ratio calculator"
@@ -13,5 +13,7 @@ Gem::Specification.new do |s|
   s.require_paths           = ["lib"]
   s.homepage                = 'http://github.com/MaximilianMeister/rirera'
   s.license                 = 'MIT'
+  s.add_dependency("colorize", ["~> 0.7.3"])
+  s.add_dependency("trollop", ["2.0"])
   s.post_install_message    = 'Happy trading!'
 end
