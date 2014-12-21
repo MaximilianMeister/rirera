@@ -4,3 +4,4 @@ Version 0.1.2: added screenshot to README.rdoc
 Version 0.1.3: class refactoring/encapsulation
 Version 0.1.4: adding proper cli
 Version 0.1.5: adding dependencies
+Version 0.2.0: modularize rirera
