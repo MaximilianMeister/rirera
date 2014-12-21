@@ -1,8 +1,50 @@
 ---
 broker:
   consors:
-    name: Cortal Consors
+    name: Consors Bank
     basic_price: 4.95
     commission_rate: 0.0025
     min_rate: 9.95
     max_rate: 69.00
+  ingdiba:
+    name: ING DiBa
+    basic_price: 0
+    commission_rate: 0.0025
+    min_rate: 9.90
+    max_rate: 59.90
+  comdirect:
+    name: .comdirect
+    basic_price: 4.90
+    commission_rate: 0.0025
+    min_rate: 9.90
+    max_rate: 59.90
+  sbroker:
+    name: SBroker
+    basic_price: 4.95
+    commission_rate: 0.0025
+    min_rate: 9.95
+    max_rate: 49.95
+  maxblue:
+    name: maxblue
+    basic_price: 0
+    commission_rate: 0.0025
+    min_rate: 7.90
+    max_rate: 39.90
+  onvista:
+    name: OnVista Bank
+    basic_price: 5.99
+    commission_rate: 0.0023
+    min_rate: 5.99
+    max_rate: 39.00
+  dab:
+    name: DAB bank
+    basic_price: 4.95
+    commission_rate: 0.0025
+    min_rate: 3.99
+    max_rate: 55.00
+  targo:
+    name: Targo Bank
+    basic_price: 0
+    commission_rate: 0.0025
+    min_rate: 8.90
+    max_rate: 34.90

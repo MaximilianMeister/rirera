@@ -6,3 +6,4 @@ Version 0.1.4: adding proper cli
 Version 0.1.5: adding dependencies
 Version 0.2.0: modularize rirera
 Version 0.2.1: only abort from bin
+Version 0.2.2: adding more brokers
