@@ -3,21 +3,31 @@
 require 'rirera'
 require 'trollop'
 
+def input_single(msg)
+  begin
+    print "#{msg}: "
+    val = Rirera.sanity_check($stdin.gets)
+    if val.nil?
+      puts "wrong value"
+      raise ArgumentException
+    end
+  rescue
+    retry
+  end
+  val
+end
+
 def input
   begin
     while true do
       system "clear"
       broker = Rirera.get_broker(@opts[:broker])
-      print "volume: "
-      volume = Rirera.sanity_check($stdin.gets)
-      print "target price: "
-      target = Rirera.sanity_check($stdin.gets)
-      print "actual price: "
-      actual = Rirera.sanity_check($stdin.gets)
+      volume = input_single("volume")
+      target = input_single("target price")
+      actual = input_single("actual price")
       stop = nil
       loop do
-        print "stop loss: "
-        stop = Rirera.stop_loss(actual, Rirera.sanity_check($stdin.gets))
+        stop = Rirera.stop_loss(actual, input_single("stop loss"))
         puts "stop loss has to be lower than actual price" if stop.nil?
         break unless stop.nil?
       end
@@ -44,10 +54,12 @@ def main
     opt :loop, "start rirera in loop input mode (other options will be discarded)", :short => 'l'
   end
 
+  broker = Rirera.get_broker(@opts[:broker])
+  abort("not a valid broker") if broker.nil?
+
   if @opts[:loop_given]
     input
   else
-    broker = Rirera.get_broker(@opts[:broker])
     volume = @opts[:volume_given] ? @opts[:volume] : abort("missing volume")
     target = @opts[:target_given] ? @opts[:target] : abort("missing target")
     actual = @opts[:actual_given] ? @opts[:actual] : abort("missing actual")

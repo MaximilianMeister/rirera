@@ -79,7 +79,7 @@ module Rirera
     unless Rirera::CONFIG['broker'][broker].nil?
       broker
     else
-      abort "Not a valid broker"
+      nil
     end
   end
 
@@ -96,7 +96,7 @@ module Rirera
     num.chomp!.gsub!(",",".")
     # only allow int and float
     unless Rirera.is_numeric?(num)
-      abort "Wrong input"
+      nil
     else
       num.to_f
     end
