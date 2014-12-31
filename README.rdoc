@@ -6,13 +6,15 @@
 
 A small ruby command line tool to calculate a risk reward ratio.
 
-== Configuration
-
-Add your broker, and its specific commision rates to `conf/rirera.yml`
-
 == Installation
 
    gem install 'rirera'
+
+Alternatively run directly from the git directory
+
+== Configuration
+
+Add your broker, and its specific commision rates to `conf/rirera.yml`
 
 == Run
 
