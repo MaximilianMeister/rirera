@@ -6,7 +6,7 @@ http://github.com/MaximilianMeister/rirera
 
 A small ruby command line tool to calculate a risk reward ratio.
 
-![screenshot](http://ibin.co/1jv1nIeXZ8j9)
+![screenshot](https://raw.githubusercontent.com/MaximilianMeister/dirtyhelpers/master/img/rirera.png)
 
 ## Configuration
 
