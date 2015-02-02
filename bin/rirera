@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'rirera'
+require File.join(File.expand_path("..", File.dirname(__FILE__)),"lib","rirera")
 require 'trollop'
 
 def input_single(msg)
