@@ -59,20 +59,5 @@ module Rirera
     def get_break_even
       ((@volume + get_total_commission) / get_amount).round(2)
     end
-
-    def print_result
-      12.times { print "#" }
-      print "\n# RRR: "
-      print "#{risk_reward_ratio}".yellow
-      puts " #"
-      12.times { print "#" }
-      2.times { puts "" }
-      puts "Volume: #{@volume}"
-      puts "Amount: #{get_amount}"
-      puts "Gain: #{get_max_gain}".green
-      puts "Loss: #{get_loss}".red
-      puts "Commission: #{get_total_commission}".magenta
-      puts "Break Even: #{get_break_even}".blue
-    end
   end
 end

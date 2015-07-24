@@ -32,7 +32,7 @@ def input
         break unless stop.nil?
       end
       rrr = Rirera::Order.new(broker, volume, target, actual, stop)
-      rrr.print_result
+      print_result(rrr)
       puts ""
       puts "Again? (y/n)"
       exit if $stdin.gets.chomp == "n"
@@ -42,6 +42,22 @@ def input
       puts ""
       abort "Exit..."
   end
+end
+
+# Print result
+def print_result(rrr)
+  12.times { print "#" }
+  print "\n# RRR: "
+  print "#{rrr.risk_reward_ratio}".yellow
+  puts " #"
+  12.times { print "#" }
+  2.times { puts "" }
+  puts "Volume: #{rrr.volume}"
+  puts "Amount: #{rrr.get_amount}"
+  puts "Gain: #{rrr.get_max_gain}".green
+  puts "Loss: #{rrr.get_loss}".red
+  puts "Commission: #{rrr.get_total_commission}".magenta
+  puts "Break Even: #{rrr.get_break_even}".blue
 end
 
 def main
@@ -66,7 +82,7 @@ def main
     stop = @opts[:stop_given] ? Rirera.stop_loss(actual,@opts[:stop]) : abort("missing stop")
     abort("stop loss has to be lower than actual price") if stop.nil?
     rrr = Rirera::Order.new(broker, volume, target, actual, stop)
-    rrr.print_result
+    print_result(rrr)
   end
 end
 main
