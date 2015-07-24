@@ -1,6 +1,7 @@
-require "rirera/engine"
 require "colorize"
 require "yaml"
+require "rails"
+require_relative "rirera/engine"
 require_relative "rirera/order"
 
 module Rirera
