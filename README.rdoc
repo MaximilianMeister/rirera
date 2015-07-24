@@ -1,4 +1,4 @@
-{<img src="https://codeclimate.com/github/MaximilianMeister/rirera/badges/gpa.svg" />}[https://codeclimate.com/github/MaximilianMeister/rirera] {<img src="https://codeclimate.com/github/MaximilianMeister/rirera/badges/coverage.svg" />}[https://codeclimate.com/github/MaximilianMeister/rirera/coverage]
+{<img src="https://travis-ci.org/MaximilianMeister/rirera.svg" alt="Build Status" />}[https://travis-ci.org/MaximilianMeister/rirera] {<img src="https://codeclimate.com/github/MaximilianMeister/rirera/badges/gpa.svg" />}[https://codeclimate.com/github/MaximilianMeister/rirera] {<img src="https://codeclimate.com/github/MaximilianMeister/rirera/badges/coverage.svg" />}[https://codeclimate.com/github/MaximilianMeister/rirera/coverage]
 = rirera
 
 * https://github.com/MaximilianMeister/rirera
