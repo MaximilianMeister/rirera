@@ -1,4 +1,7 @@
 source "https://rubygems.org"
 
-gem "codeclimate-test-reporter", group: :test, require: nil
 gemspec
+
+group :test do
+  gem "codeclimate-test-reporter", require: nil
+end
