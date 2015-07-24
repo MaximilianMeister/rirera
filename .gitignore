@@ -4,3 +4,4 @@ spec/dummy/log/*.log
 Gemfile.lock
 coverage/
 pkg/
+rdoc/
