@@ -26,7 +26,7 @@ class OrderTest < ActiveSupport::TestCase
   test "get break even" do
     assert_equal @order.get_break_even, 3.17
   end
-  
+
   private
   def initialize_order
     @order = Rirera::Order.new("consors", 2000, 3.74, 3.14, 3.00)
