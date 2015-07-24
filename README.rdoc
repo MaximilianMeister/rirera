@@ -17,11 +17,11 @@ Alternatively run directly from the git directory
 
 == Configuration
 
-Add your broker, and its specific commision rates to `conf/rirera.yml`
+Add your broker, and its specific commission rates to `config/brokers.yml`
 
 == Run
 
-   $ rirera -h
+   $ bin/rirera -h
    Options:
      --broker, -b <s>:   choose your broker
      --volume, -v <f>:   volume (amount of money)
