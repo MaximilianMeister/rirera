@@ -4,6 +4,7 @@
 
 == What is rirera?
 
+A rails engine.
 A small ruby command line tool to calculate a risk reward ratio.
 
 == Installation

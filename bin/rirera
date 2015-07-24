@@ -6,7 +6,7 @@ require 'trollop'
 def input_single(msg)
   begin
     print "#{msg}: "
-    val = Rirera.sanity_check($stdin.gets)
+    val = Rirera.gets_sanity($stdin.gets)
     if val.nil?
       puts "wrong value"
       raise ArgumentException
