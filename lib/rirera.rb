@@ -5,14 +5,22 @@ require_relative "rirera/engine"
 require_relative "rirera/order"
 
 module Rirera
-  CONFIG = YAML.load_file(File.join(File.expand_path("..", File.dirname(__FILE__)),"config/brokers.yml"))
+  BROKERS = YAML.load_file(
+    File.join(
+      File.expand_path(
+        "..",
+        File.dirname(__FILE__)
+      ),
+      "config/brokers.yml"
+    )
+  )
 
   extend self
   # Returns a valid broker or nil
   # Params:
   # +broker+:: +String+ Name of the broker
   def get_broker(broker)
-    unless Rirera::CONFIG['broker'][broker].nil?
+    unless BROKERS['broker'][broker].nil?
       broker
     else
       nil
