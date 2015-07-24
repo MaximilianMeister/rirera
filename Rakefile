@@ -24,6 +24,7 @@ Bundler::GemHelper.install_tasks
 require 'rake/testtask'
 
 Rake::TestTask.new(:test) do |t|
+  ENV["TESTOPTS"] = "-v"
   t.libs << 'lib'
   t.libs << 'spec'
   t.pattern = 'spec/**/*_test.rb'
