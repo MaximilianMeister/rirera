@@ -1,0 +1,10 @@
+en:
+  rirera:
+    order:
+      inspect:
+        broker: "Broker"
+        volume: "Volume"
+        target: "Target Price"
+        actual: "Actual Price"
+        stop: "StopLoss"
+        submit: "Okay"

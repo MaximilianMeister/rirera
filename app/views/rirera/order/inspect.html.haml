@@ -1,2 +1,18 @@
-%h1 Order#get
-%p Find me in app/views/rirera/order/get.html.haml
+%h1 Order
+= form_for :order do |f|
+  = t(".broker")
+  = f.text_field :broker
+  %br
+  = t(".volume")
+  = f.text_field :volume
+  %br
+  = t(".target")
+  = f.text_field :target
+  %br
+  = t(".actual")
+  = f.text_field :actual
+  %br
+  = t(".stop")
+  = f.text_field :stop
+  %br
+  = f.submit t(".submit")
