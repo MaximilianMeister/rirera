@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", "~> 4.1.12"
+  s.add_dependency "haml-rails", "~> 0.9.0"
   s.add_dependency "colorize", ["~> 0.7", ">= 0.7.3"]
   s.add_dependency "trollop", ["2.0"]
   s.post_install_message = "Happy trading!"
